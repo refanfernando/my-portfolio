@@ -1,0 +1,436 @@
+* {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --font-primary-color: white;
+  --secondary-color: #151515;
+  --background-menu-color: rgb(75, 86, 103);
+}
+
+body {
+  font-family: "Kode Mono", monospace;
+  width: 85%;
+  margin: 20px auto;
+  background-color: var(--secondary-color);
+  color: var(--font-primary-color);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-width: 1200px;
+}
+
+nav h1 {
+  font-size: 14px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--font-primary-color);
+}
+
+nav a:hover {
+  color: rgb(214, 210, 210);
+}
+
+nav ul {
+  z-index: 2;
+  position: fixed;
+  list-style: none;
+  background-color: var(--background-menu-color);
+  width: 200px;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+}
+
+nav ul li {
+  display: flex;
+  justify-content: center;
+}
+
+nav input {
+  z-index: 3;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+nav span.humberger_menu,
+nav span.humberger_menu::before,
+nav span.humberger_menu::after {
+  z-index: 3;
+  height: 2px;
+  width: 28px;
+  position: fixed;
+  display: inline;
+  background-color: white;
+  transition: 0.2s;
+}
+
+nav span.humberger_menu {
+  right: 10px;
+  top: 10px;
+}
+
+nav span.humberger_menu::after {
+  content: "";
+  margin-top: 10px;
+}
+
+nav span.humberger_menu::before {
+  content: "";
+  margin-top: 20px;
+}
+
+nav input:checked ~ .humberger_menu ~ ul {
+  right: 0;
+  top: 0;
+  animation: navSlideIn 0.5s ease-in forwards;
+}
+
+nav input:not(:checked) ~ .humberger_menu ~ ul {
+  right: -100%;
+  top: 0;
+  animation: navSlideOut 0.5s ease-in forwards;
+}
+
+nav input:checked ~ .humberger_menu::after {
+  display: none;
+}
+
+nav input:checked ~ .humberger_menu {
+  translate: 0 10px;
+  rotate: -48deg;
+}
+
+nav input:checked ~ .humberger_menu::before {
+  translate: 0 -18px;
+  rotate: 95deg;
+}
+
+nav input:hover ~ .humberger_menu,
+nav input:hover ~ .humberger_menu::after,
+nav input:hover ~ .humberger_menu::before {
+  background-color: rgb(214, 211, 211);
+}
+
+header {
+  padding: 20px 0;
+  z-index: 1;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header .wrapper_title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header .wrapper_title img.profile {
+  position: absolute;
+  width: 250px;
+  top: 20%;
+  right: 20%;
+  opacity: 0.8;
+  animation: imgProfileAnimation 2s forwards;
+}
+
+header .wrapper_social_media ul {
+  list-style: none;
+  display: grid;
+  width: 350px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+header .wrapper_social_media ul li a {
+  display: flex;
+}
+
+header .wrapper_social_media img {
+  margin-right: 4px;
+}
+
+header .wrapper_social_media img {
+  width: 15px;
+  background-color: white;
+}
+
+header .wrapper_social_media a {
+  font-size: 12px;
+  color: var(--font-primary-color);
+  text-decoration: none;
+}
+
+header .wrapper_social_media a {
+  color: var(--font-primary-color);
+  text-decoration: none;
+}
+
+.card_title_experience {
+  display: flex;
+  padding: 4px 0;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.light {
+  background-color: #ffffff;
+  color: var(--secondary-color);
+}
+
+.dark {
+  background-color: #202022;
+  color: #fafafa;
+}
+
+main #about {
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+main #about h1 {
+  display: grid;
+  align-items: center;
+  font-size: 2rem;
+}
+
+main #about p {
+  padding: 10px 0;
+  text-align: justify;
+}
+
+main #service h1,
+main #project h1,
+main #contact h1 {
+  font-size: 2rem;
+}
+
+main #service .service_card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 5px;
+  padding: 10px 0 60px 0;
+}
+
+main #service .service_card .service_card__item {
+  padding: 14px;
+}
+
+main #service .service_card .service_card__item h2.card_number {
+  display: flex;
+  justify-content: end;
+  font-size: 4rem;
+  margin: 5px;
+}
+
+main #service .service_card .service_card__item h2.card_title {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+main #service .service_card .service_card__item p.card_content {
+  text-align: justify;
+}
+
+#project ul {
+  margin: 6px 0 60px 0;
+  border: 4px solid white;
+  box-shadow: 2px 2px 2px rgba(241, 239, 239, 0.8);
+  border-radius: 4px;
+  padding: 5px;
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 5px;
+  justify-content: center;
+}
+
+#project ul li img {
+  display: block;
+  width: 100%;
+}
+
+#contact h1 {
+  text-align: center;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+}
+
+#contact form input,
+#contact form textarea {
+  width: 100%;
+}
+
+#contact form input {
+  height: 38px;
+  padding-left: 4px;
+  margin-bottom: 10px;
+}
+
+#contact form textarea {
+  height: 200px;
+  padding: 10px 4px;
+  margin-bottom: 10px;
+}
+
+#contact form button {
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.left_side_border,
+.right_side_border {
+  height: 100px;
+  width: 100px;
+  background-image: linear-gradient(
+    80deg,
+    rgb(111, 187, 111),
+    rgb(83, 83, 186)
+  );
+  position: fixed;
+  clip-path: polygon(
+    59% 0,
+    100% 0,
+    85% 8%,
+    9% 8%,
+    9% 82%,
+    0 100%,
+    0 71%,
+    0% 43%,
+    0 0
+  );
+}
+.left_side_border {
+  left: 0;
+  top: 0;
+}
+
+.right_side_border {
+  right: 0;
+  bottom: 0;
+  rotate: 180deg;
+}
+
+/* laptop screen */
+@media screen and (min-width: 972px) {
+  nav {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  nav input,
+  nav span.humberger_menu {
+    display: none;
+  }
+
+  nav ul {
+    position: relative;
+    width: 50%;
+    height: auto;
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: end;
+  }
+
+  nav input:not(:checked) ~ .humberger_menu ~ ul {
+    right: 0;
+    top: 0;
+    animation: none;
+  }
+
+  header {
+    height: 350px;
+  }
+
+  header h1 {
+    font-size: 6rem;
+  }
+
+  header img.profile {
+    width: 380px;
+    top: 5%;
+    right: 20%;
+  }
+
+  main #about {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  main #about h1 {
+    font-size: 4rem;
+  }
+
+  main #about p {
+    padding-left: 10%;
+  }
+
+  main #service h1,
+  main #project h1,
+  main #contact h1 {
+    font-size: 4rem;
+  }
+
+  #contact form input,
+  #contact form textarea {
+    width: 40%;
+  }
+}
+
+@keyframes navSlideIn {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes navSlideOut {
+  from {
+    right: 0;
+  }
+  to {
+    right: -100%;
+  }
+}
+
+@keyframes imgProfileAnimation {
+  from {
+    opacity: 0;
+    top: 10%;
+  }
+  to {
+    right: 0.8;
+  }
+}
