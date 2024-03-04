@@ -246,22 +246,86 @@ main #service .service_card .service_card__item p.card_content {
   text-align: justify;
 }
 
-#project ul {
-  margin: 6px 0 60px 0;
-  border: 4px solid white;
-  box-shadow: 2px 2px 2px rgba(241, 239, 239, 0.8);
-  border-radius: 4px;
-  padding: 5px;
+#project {
   display: grid;
-  list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 5px;
-  justify-content: center;
+  grid-template-columns: 1fr;
+  margin-bottom: 50px;
 }
 
-#project ul li img {
+#project h1 {
+  margin-bottom: 20px;
+}
+
+#project .img_cover {
   display: block;
   width: 100%;
+}
+
+.project_items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.project_item {
+  padding: 30px 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
+
+.project_item_title {
+  display: flex;
+}
+
+.project_item .project_item_title {
+  margin-bottom: 10px;
+}
+
+.project_item_title .arrow_up {
+  width: 20px;
+  margin-left: 20px
+}
+
+.project_item_description {
+  display: flex;
+  flex-direction: column;
+  min-height: 85%;
+  justify-content: space-between;
+}
+
+.project_item p {
+  text-align: justify;
+}
+
+.project_item img {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.project_item:hover {
+  background-color: rgba(43, 43, 43, 0.4);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project_item:hover div h4 {
+  color: green;
+}
+
+.project_item:hover div img {
+  border: 1px solid grey;
+}
+
+.green_chip {
+  background-color: rgb(86, 182, 86, .2);
+  color: green;
+  padding: 4px 5px;
+  border-radius: 10px;
+  font-weight: bolder;
 }
 
 #contact h1 {
@@ -309,11 +373,7 @@ footer {
 .right_side_border {
   height: 100px;
   width: 100px;
-  background-image: linear-gradient(
-    80deg,
-    rgb(111, 187, 111),
-    rgb(83, 83, 186)
-  );
+  animation: sideBorderAnimation 5s infinite;
   position: fixed;
   clip-path: polygon(
     59% 0,
@@ -401,6 +461,20 @@ footer {
     font-size: 4rem;
   }
 
+  
+.project_items {
+  grid-template-columns: 1fr 1fr;
+}
+
+  #project h1 {
+    display: flex;
+    align-items: center;
+  }
+
+  .project_item {
+    grid-template-columns: 1fr 3fr
+  }
+
   #contact form input,
   #contact form textarea {
     width: 40%;
@@ -432,5 +506,43 @@ footer {
   }
   to {
     right: 0.8;
+  }
+}
+
+@keyframes sideBorderAnimation {
+  0% {
+    background-image: linear-gradient(
+      0deg,
+      rgb(111, 187, 111),
+      rgb(83, 83, 186)
+    );
+  }
+  25% {
+    background-image: linear-gradient(
+      25deg,
+      rgb(111, 187, 111),
+      rgb(83, 83, 186)
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      50deg,
+      rgb(111, 187, 111),
+      rgb(83, 83, 186)
+    );
+  }
+  75% {
+    background-image: linear-gradient(
+      75deg,
+      rgb(111, 187, 111),
+      rgb(83, 83, 186)
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      100deg,
+      rgb(111, 187, 111),
+      rgb(83, 83, 186)
+    );
   }
 }
